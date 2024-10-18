@@ -7,6 +7,7 @@
 @use "../src/components/charactertile/tagContainer/tagContainer.scss" as g;
 @use "main.scss" as h;
 @use "../src/components/basicComponents/button.scss" as i;
+@use "../src/components/actionBar/biepBupBar.scss" as j;
 
 $neutral-000: #F5ECFF;
 $neutral-100: #E0D5FF;
@@ -18,20 +19,24 @@ $neutral-900: #19181C;
 $primary-500: #00C89C;
 
 h1 {
-  color: $neutral-100;
+  color: #F5ECFF;
   font-size: 1.8rem;
   font-weight: normal;
-  margin-left: -520px;
   margin-bottom: 30px;
 }
 
 .content {
-  margin: 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  margin: 0 20%;
 }
+
+//.centeredContent {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//}
+
 
 
 

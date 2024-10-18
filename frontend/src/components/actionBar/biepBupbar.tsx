@@ -5,6 +5,7 @@
 import {useEffect, useState} from "react";
 import {backendUrl} from "../../constants.tsx";
 import {Character} from "../characterOverview/Character.ts";
+import PrimaryButton from "../basicComponents/button.tsx";
 
 const BiepBupBar = () => {
     const [data, setData] = useState<Character[]>();
@@ -33,11 +34,25 @@ const BiepBupBar = () => {
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
+    const createCharacter = () => {
+        try {
+            const response = fetch();
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const result = await response.json();
+            setData(result);
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setLoading(false);
+        }
+    }
+
     return (
-           <div>
-                {data?.map((character, index) => (
-                     <div key={index}>{character.name}</div>
-                ))}
+           <div className={"biepBupBar"}>
+               {data?.length !== 0 && <div className={"characterCounter"}>{data?.length} characters found</div>}
+               <PrimaryButton text={"Add Character"} onClick={() => {}} />
            </div>
     );
 };
