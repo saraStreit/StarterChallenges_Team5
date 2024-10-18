@@ -1,0 +1,14 @@
+﻿services:
+  Db:
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=dungeonsanddragons
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
