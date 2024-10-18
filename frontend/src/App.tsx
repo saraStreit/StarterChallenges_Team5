@@ -1,33 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import './App.scss'
+import Header from "./components/header/Header.tsx";
+import CharacterOverview from "./components/characterOverview/CharacterOverview.tsx";
+import {Character} from "./components/characterOverview/Character.ts";
+import {backendUrl} from "./constants.tsx";
+import BiepBupBar from "./components/actionBar/biepBupbar.tsx";
+import {useEffect, useState} from "react";
 
+ function App() {
+
+     const [characters, setCharacters] = useState<Character[]>();
+     const [loading, setLoading] = useState(true);
+     const [error, setError] = useState(null);
+
+     useEffect(() => {
+         const fetchCharacters = async () => {
+             try {
+                 const response = await fetch(backendUrl);
+                 if (!response.ok) {
+                     throw new Error('Network response was not ok');
+                 }
+                 const result = await response.json();
+                 setCharacters(result);
+             } catch (error) {
+                 setError(error.message);
+             } finally {
+                 setLoading(false);
+             }
+         };
+         fetchCharacters();
+     }, []);
+
+     if (loading) return <div>Loading...</div>;
+     if (error) return <div>Error: {error}</div>;
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className={"wrapper"}>
+        <Header />
+          <BiepBupBar />
+          <div className={"content"}>
+              <h1>Character Overview</h1>
+              { characters && <CharacterOverview characters={characters}/> }
+          </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

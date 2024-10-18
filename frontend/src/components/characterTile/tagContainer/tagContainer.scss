@@ -1,0 +1,17 @@
+.tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #54F4D1;
+    border: 1px solid #54F4D1;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    margin: 0 5px;
+}
+
+.tagContainer {
+  padding: 8px 0 0 0;
+    display: flex;
+    flex-direction: row;
+}
