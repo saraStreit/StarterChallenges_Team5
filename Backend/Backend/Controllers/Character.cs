@@ -1,7 +1,6 @@
-using Backend.DTOs;
-
 namespace Backend.Controllers;
 
+using DTOs;
 using Data;
 using Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -13,18 +12,49 @@ public class CharacterController(AppDbContext context) : ControllerBase
 {
     // POST: api/character
     [HttpPost]
-    public async Task<IActionResult> CreateCharacter([FromBody] Character character)
+    public async Task<IActionResult> CreateCharacter([FromBody] CreateCharacterDto createCharacterDto)
     {
-        if (character == null || string.IsNullOrWhiteSpace(character.Name))
+        if (createCharacterDto == null)
         {
-            return BadRequest("Character name is required.");
+            return BadRequest("Character data is required.");
         }
+
+        // Validate the DTO
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        // Create a new Character object from the DTO
+        var character = new Character
+        (
+            id: 0,
+            name: createCharacterDto.Name,
+            gender: createCharacterDto.Gender,
+            race: createCharacterDto.Race,
+            characterClass: createCharacterDto.CharacterClass,
+            level: createCharacterDto.Level,
+            armor: createCharacterDto.Armor,
+            speed: createCharacterDto.Speed,
+            attributes: new CharacterAttribute
+            (
+                id: 0,
+                strength: createCharacterDto.AttributesDto.Strength ?? 0,
+                dexterity: createCharacterDto.AttributesDto.Dexterity ?? 0,
+                constitution: createCharacterDto.AttributesDto.Constitution ?? 0,
+                intelligence: createCharacterDto.AttributesDto.Intelligence ?? 0,
+                wisdom: createCharacterDto.AttributesDto.Wisdom ?? 0,
+                charisma: createCharacterDto.AttributesDto.Charisma ?? 0,
+                initiative: createCharacterDto.AttributesDto.Initiative ?? 0
+            )
+        );
 
         context.Characters.Add(character);
         await context.SaveChangesAsync();
 
         return CreatedAtAction(nameof(CreateCharacter), new { id = character.Id }, character);
     }
+
 
     // GET: api/characters
     [HttpGet]
@@ -55,10 +85,9 @@ public class CharacterController(AppDbContext context) : ControllerBase
 
     // PUT: api/characters/{id}
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateCharacter(int id, [FromBody] UpdateCharacterDto updateCharacterDto,
-        [FromBody] UpdateCharacterAttributesDto updateCharacterAttributesDto)
+    public async Task<IActionResult> UpdateCharacter(int id, [FromBody] UpdateCharacterDto updateCharacterDto)
     {
-        if (updateCharacterDto == null && updateCharacterAttributesDto == null)
+        if (updateCharacterDto == null)
         {
             return BadRequest("Update data cannot be null.");
         }
@@ -69,59 +98,28 @@ public class CharacterController(AppDbContext context) : ControllerBase
             return NotFound();
         }
 
-        if (updateCharacterDto != null)
+        // Update character properties
+        if (!string.IsNullOrWhiteSpace(updateCharacterDto.Name))
         {
-            if (!string.IsNullOrWhiteSpace(updateCharacterDto.Name))
-            {
-                character.Name = updateCharacterDto.Name;
-            }
-
-            if (updateCharacterDto.Armor.HasValue)
-            {
-                character.Armor = updateCharacterDto.Armor.Value;
-            }
-
-            if (updateCharacterDto.HealthPoints.HasValue)
-            {
-                character.HealthPoints =
-                    Tuple.Create(updateCharacterDto.HealthPoints.Value, character.HealthPoints.Item2);
-            }
+            character.Name = updateCharacterDto.Name;
         }
 
-        if (updateCharacterAttributesDto != null)
+        if (updateCharacterDto.Armor.HasValue)
         {
-            if (updateCharacterAttributesDto.Strength.HasValue)
-            {
-                character.Attributes.Strength = updateCharacterAttributesDto.Strength.Value;
-            }
-
-            if (updateCharacterAttributesDto.Dexterity.HasValue)
-            {
-                character.Attributes.Dexterity = updateCharacterAttributesDto.Dexterity.Value;
-            }
-
-            if (updateCharacterAttributesDto.Constitution.HasValue)
-            {
-                character.Attributes.Constitution = updateCharacterAttributesDto.Constitution.Value;
-            }
-
-            if (updateCharacterAttributesDto.Intelligence.HasValue)
-            {
-                character.Attributes.Intelligence = updateCharacterAttributesDto.Intelligence.Value;
-            }
-
-            if (updateCharacterAttributesDto.Wisdom.HasValue)
-            {
-                character.Attributes.Wisdom = updateCharacterAttributesDto.Wisdom.Value;
-            }
-
-            if (updateCharacterAttributesDto.Charisma.HasValue)
-            {
-                character.Attributes.Charisma = updateCharacterAttributesDto.Charisma.Value;
-            }
+            character.Armor = updateCharacterDto.Armor.Value;
         }
 
-        // Save changes to the database
+        if (updateCharacterDto.Attributes != null)
+        {
+            character.Attributes.Strength = updateCharacterDto.Attributes.Strength;
+            character.Attributes.Dexterity = updateCharacterDto.Attributes.Dexterity;
+            character.Attributes.Constitution = updateCharacterDto.Attributes.Constitution;
+            character.Attributes.Intelligence = updateCharacterDto.Attributes.Intelligence;
+            character.Attributes.Wisdom = updateCharacterDto.Attributes.Wisdom;
+            character.Attributes.Charisma = updateCharacterDto.Attributes.Charisma;
+            character.Attributes.Initiative = updateCharacterDto.Attributes.Initiative;
+        }
+
         await context.SaveChangesAsync();
 
         return NoContent();

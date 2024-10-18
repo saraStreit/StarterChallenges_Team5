@@ -1,36 +1,42 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace Backend.Entities;
 
+using System.ComponentModel.DataAnnotations;
+
 public class Character
-(
-    int id,
-    string name,
-    string gender,
-    string race,
-    string characterClass,
-    uint level,
-    uint armor,
-    uint speed,
-    Tuple<uint, int> healthPoints,
-    CharacterAttribute attributes
-)
 {
-    [Key] public int Id { get; private set; } = id;
+    [Key] public int Id { get; private set; }
 
-    [MaxLength(100)] public string Name { get; set; } = name;
+    [MaxLength(100)] public string Name { get; set; }
 
-    [MaxLength(30)] public string Gender { get; set; } = gender;
+    [MaxLength(30)] public string Gender { get; set; }
 
-    [MaxLength(30)] public string Race { get; set; } = race;
-    [MaxLength(30)] public string Class { get; set; } = characterClass;
+    [MaxLength(30)] public string Race { get; set; }
 
-    public uint Level { get; set; } = level;
+    [MaxLength(30)] public string CharacterClass { get; set; }
 
-    public uint Armor { get; set; } = armor;
-    public uint Speed { get; set; } = speed;
+    public uint Level { get; set; }
 
-    public Tuple<uint, int> HealthPoints { get; set; } = healthPoints;
-    
-    public CharacterAttribute Attributes = attributes;
+    public uint Armor { get; set; }
+
+    public uint Speed { get; set; }
+
+    public CharacterAttribute Attributes { get; set; }
+
+    public Character()
+    {
+    }
+
+    public Character(int id, string name, string gender, string race, string characterClass, uint level, uint armor,
+        uint speed, CharacterAttribute attributes)
+    {
+        Id = id;
+        Name = name;
+        Gender = gender;
+        Race = race;
+        CharacterClass = characterClass;
+        Level = level;
+        Armor = armor;
+        Speed = speed;
+        Attributes = attributes;
+    }
 }
