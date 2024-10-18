@@ -1,25 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "/Users/deadepona/dev/Hackathon/StarterChallenges_Team5/Backend/Backend/Backend.csproj": {}
+    "C:\\Users\\Red Dino\\StarterChallenges_Team5\\Backend\\Backend\\Backend.csproj": {}
   },
   "projects": {
-    "/Users/deadepona/dev/Hackathon/StarterChallenges_Team5/Backend/Backend/Backend.csproj": {
+    "C:\\Users\\Red Dino\\StarterChallenges_Team5\\Backend\\Backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/deadepona/dev/Hackathon/StarterChallenges_Team5/Backend/Backend/Backend.csproj",
+        "projectUniqueName": "C:\\Users\\Red Dino\\StarterChallenges_Team5\\Backend\\Backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "/Users/deadepona/dev/Hackathon/StarterChallenges_Team5/Backend/Backend/Backend.csproj",
-        "packagesPath": "/Users/deadepona/.nuget/packages/",
-        "outputPath": "/Users/deadepona/dev/Hackathon/StarterChallenges_Team5/Backend/Backend/obj/",
+        "projectPath": "C:\\Users\\Red Dino\\StarterChallenges_Team5\\Backend\\Backend\\Backend.csproj",
+        "packagesPath": "C:\\Users\\Red Dino\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Red Dino\\StarterChallenges_Team5\\Backend\\Backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/deadepona/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Red Dino\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -32,15 +35,34 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0-rc.2.24474.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.0-rc.2.24474.1, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.0-rc.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[6.9.0, )"
             }
           },
           "imports": [
@@ -62,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
