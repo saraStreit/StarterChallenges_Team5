@@ -1,11 +1,12 @@
-@import "../src/components/header/Header.scss";
-@import "../src/components/characterTile/CharacterTile.scss";
-@import "../src/components/characterOverview/CharacterOverview.scss";
-@import "../src/components/characterTile/CharacterTile.scss";
-@import "../src/components/characterTile/nameContainer/nameContainer.scss";
-@import "../src/components/characterTile/imageContainer/imageContainer.scss";
-@import "../src/components/charactertile/tagContainer/tagContainer.scss";
-@import "main.scss";
+@use "../src/components/header/Header.scss";
+@use "../src/components/characterTile/CharacterTile.scss";
+@use "../src/components/characterOverview/CharacterOverview.scss";
+@use "../src/components/characterTile/CharacterTile.scss";
+@use "../src/components/characterTile/nameContainer/nameContainer.scss";
+@use "../src/components/characterTile/imageContainer/imageContainer.scss";
+@use "../src/components/charactertile/tagContainer/tagContainer.scss";
+@use "main.scss";
+@use "../src/components/basicComponents/"
 
 $neutral-000: #F5ECFF;
 $neutral-100: #E0D5FF;
