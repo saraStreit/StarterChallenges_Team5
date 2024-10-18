@@ -1,33 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+import './App.scss'
+import Header from "./components/header/Header.tsx";
+import CharacterOverview from "./components/characterOverview/CharacterOverview.tsx";
+import {Character} from "./components/characterOverview/Character.ts";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const characterA: Character = {
+        name: "Minta Bonbon",
+        tags: ["Barbarian", "Tiefling", "Lvl4"]
+    }
+    const characterB: Character = {
+        name: "Heribert Hohenheim",
+        tags: ["Dwarf", "Druid", "Lvl900"]
+    }
+    const characterc: Character = {
+        name: "Crazy Chicken",
+        tags: ["Chicken", "Fighter", "Lvl1"]
+    }
+    const characterd: Character = {
+        name: "Hieronimus",
+        tags: ["En", "astrengends", "Chind"]
+    }
+    const characters: Character[] = [characterA, characterB, characterc, characterd];
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className={"wrapper"}>
+        <Header />
+          <div className={"content"}>
+              <h1>Character Overview</h1>
+              <CharacterOverview characters={characters}/>
+          </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
