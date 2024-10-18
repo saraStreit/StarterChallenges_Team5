@@ -1,0 +1,56 @@
+ .throw {
+	background-color: #26232F;
+	font-family: 'Arial', sans-serif;
+	margin: 15px;
+	padding: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+  }
+  .saving-throws-container {
+	margin: 15px;
+	width: 300px;
+	border: 2px solid #00C89C;
+	border-radius: 10px;
+	padding: 20px;
+	background-color: #26232F;
+	text-align: center;
+  }
+  .saving-throws-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+  }
+  .stat-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	border: 2px solid #00C89C;
+	border-radius: 20px;
+	background-color: #26232F;
+	color: #00C89C;
+	font-weight: bold;
+  }
+  .stat-name {
+	font-size: 16px;
+	width: 40px;
+	text-align: center;
+  }
+  .stat-value {
+	font-size: 16px;
+	padding: 0 10px;
+  }
+  .modifiers-label {
+	margin-top: 20px;
+	color: #9D95B1;
+	font-size: 14px;
+  }
+  .saving-throws-title {
+	margin-top: 10px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #00C89C;
+  }
+   
