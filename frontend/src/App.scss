@@ -1,12 +1,12 @@
-@use "../src/components/header/Header.scss";
-@use "../src/components/characterTile/CharacterTile.scss";
-@use "../src/components/characterOverview/CharacterOverview.scss";
-@use "../src/components/characterTile/CharacterTile.scss";
-@use "../src/components/characterTile/nameContainer/nameContainer.scss";
-@use "../src/components/characterTile/imageContainer/imageContainer.scss";
-@use "../src/components/charactertile/tagContainer/tagContainer.scss";
-@use "main.scss";
-@use "../src/components/basicComponents/"
+@use "../src/components/header/Header.scss" as a;
+@use "../src/components/characterTile/CharacterTile.scss" as b;
+@use "../src/components/characterOverview/CharacterOverview.scss" as c;
+@use "../src/components/characterTile/CharacterTile.scss" as d;
+@use "../src/components/characterTile/nameContainer/nameContainer.scss" as e;
+@use "../src/components/characterTile/imageContainer/imageContainer.scss" as f;
+@use "../src/components/charactertile/tagContainer/tagContainer.scss" as g;
+@use "main.scss" as h;
+@use "../src/components/basicComponents/button.scss" as i;
 
 $neutral-000: #F5ECFF;
 $neutral-100: #E0D5FF;

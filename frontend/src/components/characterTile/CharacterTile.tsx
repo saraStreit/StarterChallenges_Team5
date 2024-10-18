@@ -5,7 +5,7 @@ import TagContainer from "./tagContainer/tagContainer.tsx";
 
 interface characterTileProps {
     name: string;
-    tags: string[];
+    // tags: string[];
 }
 
 const CharacterTile = ({name, tags} : characterTileProps) => {
@@ -13,7 +13,7 @@ const CharacterTile = ({name, tags} : characterTileProps) => {
     return (
         <div className={"characterTile"}>
             <ImageContainer name={"bupppp"} />
-            <TagContainer tags={tags} />
+            {/*<TagContainer tags={tags} />*/}
             <NameContainer name={name} />
         </div>
     )

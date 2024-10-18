@@ -9,7 +9,9 @@ const CharacterOverview = ({ characters }: CharacterOverviewProps) => {
     return (
         <div className="characterOverview">
             {characters.map((character, index) => (
-                <CharacterTile key={index} name={character.name} tags={character.tags} />
+                <CharacterTile key={index} name={character.name}
+                               // tags={character.tags}
+                />
             ))}
         </div>
     );
