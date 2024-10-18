@@ -1,4 +1,10 @@
 @import "../src/components/header/Header.scss";
+@import "../src/components/characterTile/CharacterTile.scss";
+@import "../src/components/characterOverview/CharacterOverview.scss";
+@import "../src/components/characterTile/CharacterTile.scss";
+@import "../src/components/characterTile/nameContainer/nameContainer.scss";
+@import "../src/components/characterTile/imageContainer/imageContainer.scss";
+@import "../src/components/charactertile/tagContainer/tagContainer.scss";
 @import "main.scss";
 
 $neutral-000: #F5ECFF;
@@ -9,6 +15,24 @@ $neutral-700: #221F29;
 $neutral-900: #19181C;
 
 $primary-500: #00C89C;
+
+h1 {
+  color: $neutral-100;
+  font-size: 1.8rem;
+  font-weight: normal;
+  margin-left: -520px;
+  margin-bottom: 30px;
+}
+
+.content {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
 
 
 
