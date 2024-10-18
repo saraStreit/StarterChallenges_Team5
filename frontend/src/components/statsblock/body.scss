@@ -1,0 +1,66 @@
+* {
+	box-sizing: border-box;
+	background-color:blanchedalmond;
+}
+
+
+body {
+	display: flex;
+	height: 100px;
+}
+
+.container {
+	margin:15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.wisdom-box {
+	position: relative;
+	background-color:darkgray;
+	width: 113px;
+	height: 130px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #ccc;
+}
+
+	.wisdom-box p {
+		margin-bottom: 5px;
+		font-size: 14px;
+		font-weight: bold;
+		color:black;
+		background-color:darkgray;
+	}
+
+.value {
+	font-size: 36px;
+	font-weight: bold;
+	background-color: lightgray;
+	width: 80px;
+	height: 80px;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: black;
+}
+
+.small-box {
+	position: absolute;
+	bottom: -15px;
+	background-color: grey;
+	width: 30px;
+	height: 30px;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color:black;
+	font-size: 18px;
+	font-weight: bold;
+}
