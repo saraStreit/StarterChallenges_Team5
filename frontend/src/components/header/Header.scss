@@ -1,0 +1,32 @@
+$neutral-000: #F5ECFF;
+$neutral-100: #E0D5FF;
+$neutral-300: #9D95B1;
+$neutral-500: #26232F;
+$neutral-700: #221F29;
+$neutral-900: #19181C;
+
+$primary-500: #00C89C;
+
+.header{
+  background-color: $neutral-900 ;
+  border-bottom: 1px solid $neutral-500;
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  align-content: center;
+  justify-items: center;
+}
+
+.headerLogoText{
+  color: $neutral-100;
+  font-size: 2.2rem;
+  margin-left: 2rem;
+  align-self: center;
+}
+
+.headerItem {
+  color: $neutral-100;
+  font-size: 1.3rem;
+  padding-left: 1rem;
+  align-self: center;
+}
