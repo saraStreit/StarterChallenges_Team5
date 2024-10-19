@@ -45,6 +45,9 @@ namespace Backend.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("character varying(30)");
 
+                    b.Property<int>("HealthPointsId")
+                        .HasColumnType("integer");
+
                     b.Property<long>("Level")
                         .HasColumnType("bigint");
 
@@ -64,6 +67,8 @@ namespace Backend.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AttributesId");
+
+                    b.HasIndex("HealthPointsId");
 
                     b.ToTable("Characters");
                 });
@@ -102,6 +107,25 @@ namespace Backend.Migrations
                     b.ToTable("CharacterAttribute");
                 });
 
+            modelBuilder.Entity("Backend.Entities.HealthPoints", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Current")
+                        .HasColumnType("integer");
+
+                    b.Property<long>("Max")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HealthPoints");
+                });
+
             modelBuilder.Entity("Backend.Entities.User", b =>
                 {
                     b.Property<int>("Id")
@@ -136,7 +160,15 @@ namespace Backend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Backend.Entities.HealthPoints", "HealthPoints")
+                        .WithMany()
+                        .HasForeignKey("HealthPointsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Attributes");
+
+                    b.Navigation("HealthPoints");
                 });
 #pragma warning restore 612, 618
         }

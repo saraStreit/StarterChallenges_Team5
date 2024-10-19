@@ -46,6 +46,12 @@ public class CharacterController(AppDbContext context) : ControllerBase
                 wisdom: createCharacterDto.AttributesDto.Wisdom ?? 0,
                 charisma: createCharacterDto.AttributesDto.Charisma ?? 0,
                 initiative: createCharacterDto.AttributesDto.Initiative ?? 0
+            ),
+            healthPoints: new HealthPoints
+            (
+                id: 0,
+                current: createCharacterDto.HealthPointsDto.Current ?? 0,
+                max: createCharacterDto.HealthPointsDto.Max ?? 0
             )
         );
 

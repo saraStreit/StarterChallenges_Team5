@@ -21,4 +21,5 @@ public class CreateCharacterDto
     public uint Armor { get; set; } = 0;
     public uint Speed { get; set; } = 0;
     public CharacterAttributesDto AttributesDto { get; set; } = new();
+    public HealthPointsDto HealthPointsDto { get; set; } = new();
 }
