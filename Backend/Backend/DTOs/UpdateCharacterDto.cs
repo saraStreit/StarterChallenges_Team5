@@ -16,4 +16,5 @@ public class UpdateCharacterDto
     public uint? Speed { get; set; }
 
     public CharacterAttribute? Attributes { get; set; }
+    public HealthPoints? HealthPoints { get; set; }
 }

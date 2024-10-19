@@ -103,6 +103,7 @@ public class CharacterController(AppDbContext context) : ControllerBase
 
         var character = await context.Characters
             .Include(c => c.Attributes)
+            .Include(c => c.HealthPoints)
             .FirstOrDefaultAsync(c => c.Id == id);
         
         if (character == null)
@@ -154,6 +155,12 @@ public class CharacterController(AppDbContext context) : ControllerBase
             character.Attributes.Wisdom = updateCharacterDto.Attributes.Wisdom;
             character.Attributes.Charisma = updateCharacterDto.Attributes.Charisma;
             character.Attributes.Initiative = updateCharacterDto.Attributes.Initiative;
+        }
+        
+        if (updateCharacterDto.HealthPoints != null)
+        {
+            character.HealthPoints.Current = updateCharacterDto.HealthPoints.Current;
+            character.HealthPoints.Max = updateCharacterDto.HealthPoints.Max;
         }
 
         await context.SaveChangesAsync();
