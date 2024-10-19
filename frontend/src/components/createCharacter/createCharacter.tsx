@@ -93,6 +93,14 @@ const CreateCharacterDialog = ({ isOpen, onClose, createCharacter }: createChara
                         ))}
                     </select>
                 </div>
+                <div className={"stats-input"}>
+                    <div>Wisdom:</div> <input type="number" value={wisdom} onChange={(event) => setWisdom(parseInt(event.target.value))}/>
+                    <div>Strength:</div> <input type="number" value={strength} onChange={(event) => setStrength(parseInt(event.target.value))}/>
+                    <div>Dexterity:</div> <input type="number" value={dexterity} onChange={(event) => setDexterity(parseInt(event.target.value))}/>
+                    <div>Constitution:</div> <input type="number" value={constitution} onChange={(event) => setConstitution(parseInt(event.target.value))}/>
+                    <div>Intelligence:</div> <input type="number" value={intelligence} onChange={(event) => setIntelligence(parseInt(event.target.value))}/>
+                    <div>Charisma:</div> <input type="number" value={charisma} onChange={(event) => setCharisma(parseInt(event.target.value))}/>
+                </div>
                 <PrimaryButton text={"createCharacter"} onClick={() => createCharacter({name: nameInputValue, class: classInputValue, race: raceInputValue, level: 1})}/>
             </div>
         </div>

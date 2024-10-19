@@ -10,6 +10,9 @@
 @use "../src/components/actionBar/biepBupBar.scss" as j;
 @use "../src/components/createCharacter/createCharacter.scss" as k;
 @use "../src/components/viewCharacter/viewCharacter.scss" as l;
+@use "../src/components/baseStatContainer/baseStatContainer.scss" as m;
+@use "../src/components/statDetailContainer/statDetailContainer.scss" as n;
+@use "../src/components/skill/skill.scss" as o;
 
 $neutral-000: #F5ECFF;
 $neutral-100: #E0D5FF;

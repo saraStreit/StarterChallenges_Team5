@@ -7,7 +7,6 @@ import BiepBupBar from "./components/actionBar/biepBupbar.tsx";
 import { useEffect, useState } from "react";
 import CreateCharacterDialog from "./components/createCharacter/createCharacter.tsx";
 import ViewCharacter from "./components/viewCharacter/viewCharacter.tsx";
-import createCharacter from "./components/createCharacter/createCharacter.tsx";
 
 function App() {
     const [characters, setCharacters] = useState<Character[]>();

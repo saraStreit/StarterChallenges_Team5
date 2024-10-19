@@ -1,6 +1,6 @@
 .character-view-dialog-overlay {
   position: fixed;
-  top: 0;
+  top: 20vh;
   left: 0;
   right: 0;
   bottom: 0;
@@ -18,6 +18,10 @@
   border-radius: 8px;
   width: 80%;
   position: relative;
+  display: flex;
+    flex-direction: row;
+  margin: 15px;
+  align-self: center;
 }
 
 .character-close-button {
