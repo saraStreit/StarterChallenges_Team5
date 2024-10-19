@@ -9,10 +9,11 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  color: #E0D5FF;
 }
 
 .dialog-content {
-  background-color: #fff;
+  background-color: #26232F;
   padding: 20px;
   border-radius: 8px;
   width: 400px;
@@ -27,4 +28,47 @@
   border: none;
   font-size: 16px;
   cursor: pointer;
+}
+
+.dialog-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+input {
+  background-color: #221F29;
+  color: #E0D5FF;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100px;
+  margin-bottom: 10px;
+  border: 1px solid #453F59;
+}
+
+.classSelect {
+  background-color: #221F29;
+  color: #E0D5FF;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100px;
+  margin-bottom: 10px;
+  border: 1px solid #453F59;
+}
+
+.dialog-content-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.dialog-input-box {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin-left: 10px;
 }
