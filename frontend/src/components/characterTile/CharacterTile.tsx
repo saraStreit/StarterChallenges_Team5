@@ -9,7 +9,6 @@ interface characterTileProps {
 }
 
 const CharacterTile = ({name, tags} : characterTileProps) => {
-
     return (
         <div className={"characterTile"}>
             <ImageContainer name={"bupppp"} />

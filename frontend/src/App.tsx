@@ -75,8 +75,8 @@ function App() {
                 <div className="content">
                     <div className="startOfContent">
                         <h1>My Characters</h1>
-                        <button onClick={openDialog}>Open Dialog</button>
-                        {characters && <BiepBupBar characters={characters} addCharacter={addCharacter} />}
+                        {/*<button onClick={openDialog}>Open Dialog</button>*/}
+                        {characters && <BiepBupBar characters={characters} addCharacter={openDialog} />}
                     </div>
                     <div className="centeredContent">
                         {characters && <CharacterOverview characters={characters} />}

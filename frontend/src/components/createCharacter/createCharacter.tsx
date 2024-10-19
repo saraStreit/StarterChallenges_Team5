@@ -69,7 +69,6 @@ const CreateCharacterDialog = ({ isOpen, onClose, createCharacter }: createChara
                     <option value="8">Bard</option>
                 </select>
                 </div>
-
                 <PrimaryButton text={"createCharacter"} onClick={() => createCharacter({name: inputValue})}/>
             </div>
         </div>
