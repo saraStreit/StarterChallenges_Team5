@@ -95,7 +95,7 @@ function App() {
                     </div>
                 </div>
             </div>
-            <ViewCharacter isOpen={isViewDialogOpen} onClose={closeViewDialog} createCharacter={addCharacter} />
+            {currentCharacter && <ViewCharacter isOpen={isViewDialogOpen} onClose={closeViewDialog} character={currentCharacter} />}
             <CreateCharacterDialog isOpen={isCreateDialogOpen} onClose={closeCreateDialog} createCharacter={addCharacter} />
         </>
     );

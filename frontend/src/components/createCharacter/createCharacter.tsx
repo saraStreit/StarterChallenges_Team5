@@ -30,7 +30,7 @@
 // Dialog.tsx
 
 import PrimaryButton from "../basicComponents/button.tsx";
-import {Character} from "../characterOverview/Character.ts";
+import {Character, CharacterClass, CharacterRace} from "../characterOverview/Character.ts";
 import {useState} from "react";
 
 interface createCharacterDialogProps {
@@ -39,15 +39,39 @@ interface createCharacterDialogProps {
     createCharacter: (character : Character) => void;
 }
 const CreateCharacterDialog = ({ isOpen, onClose, createCharacter }: createCharacterDialogProps) => {
-    const [inputValue, setInputValue] = useState('');
+    const [nameInputValue, setNameInputValue] = useState('');
+    const [classInputValue, setClassInputValue] = useState(CharacterClass.Barbarian);
+    const [raceInputValue, setRaceInputValue] = useState(CharacterRace.Dwarf);
+
+    const [wisdom, setWisdom] = useState(10);
+    const [strength, setStrength] = useState(10);
+    const [dexterity, setDexterity] = useState(10);
+    const [constitution, setConstitution] = useState(10);
+    const [intelligence, setIntelligence] = useState(10);
+    const [charisma, setCharisma] = useState(10);
+
+
     if (!isOpen) return null;
     const handleInputChange = (event) => {
         if (event.target.value)
         {
-            setInputValue(event.target.value);
+            setNameInputValue(event.target.value);
         }
     }
 
+    const handleClassChange = (event) => {
+        if (event.target.value)
+        {
+            setClassInputValue(event.target.value);
+        }
+    }
+
+    const handleRaceChange = (event) => {
+        if (event.target.value)
+        {
+            setRaceInputValue(event.target.value);
+        }
+    }
 
     return (
         <div className="dialog-overlay">
@@ -56,20 +80,20 @@ const CreateCharacterDialog = ({ isOpen, onClose, createCharacter }: createChara
                 <div className={"dialog-content-content"}>
                 <div className="dialog-title">Create Character</div>
                     <div className={"dialog-input"}>
-                <div>Name:</div>  <input className={"dialog-input-box"} type="text" onChange={handleInputChange} value={inputValue} defaultValue={"Helga"}/>
+                <div>Name:</div>  <input className={"dialog-input-box"} type="text" onChange={handleInputChange} value={nameInputValue} defaultValue={"Helga"}/>
                     </div>
-                <select className={"classSelect"}>
-                    <option value="1">Barbarian</option>
-                    <option value="2">Mage</option>
-                    <option value="3">Rouge</option>
-                    <option value="4">Warrior</option>
-                    <option value="5">Paladin</option>
-                    <option value="6">Priest</option>
-                    <option value="7">Druid</option>
-                    <option value="8">Bard</option>
+                <select className={"classSelect"} value={classInputValue} onChange={handleClassChange}>
+                    {Object.values(CharacterClass).map((value, index) => (
+                        <option key={index} value={value}>{value}</option>
+                    ))}
                 </select>
+                    <select className={"classSelect"} value={raceInputValue} onChange={handleRaceChange}>
+                        {Object.values(CharacterRace).map((value, index) => (
+                            <option key={index} value={value}>{value}</option>
+                        ))}
+                    </select>
                 </div>
-                <PrimaryButton text={"createCharacter"} onClick={() => createCharacter({name: inputValue})}/>
+                <PrimaryButton text={"createCharacter"} onClick={() => createCharacter({name: nameInputValue, class: classInputValue, race: raceInputValue, level: 1})}/>
             </div>
         </div>
     );

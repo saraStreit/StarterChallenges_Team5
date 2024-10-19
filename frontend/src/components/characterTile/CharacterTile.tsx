@@ -1,19 +1,20 @@
 import NameContainer from "./nameContainer/nameContainer.tsx";
 import ImageContainer from "./imageContainer/imageContainer.tsx";
+import TagContainer from "./tagContainer/tagContainer.tsx";
+import {Character} from "../characterOverview/Character.ts";
 // import TagContainer from "./tagContainer/tagContainer.tsx";
 
 
 interface characterTileProps {
-    name: string;
-    // tags: string[];
+   character: Character;
 }
 
-const CharacterTile = ({name, tags} : characterTileProps) => {
+const CharacterTile = ({character} : characterTileProps) => {
     return (
         <div className={"characterTile"}>
             <ImageContainer name={"bupppp"} />
-            {/*<TagContainer tags={tags} />*/}
-            <NameContainer name={name} />
+            <TagContainer tags={[`${character.race}`, `${character.class}`, `${character.level}lvl`]} />
+            <NameContainer name={character.name} />
         </div>
     )
 }

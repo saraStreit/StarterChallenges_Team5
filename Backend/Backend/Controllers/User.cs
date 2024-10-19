@@ -14,7 +14,7 @@ public class UserController(AppDbContext context) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateUser([FromBody] User user)
     {
-        if (user == null || string.IsNullOrWhiteSpace(user.Username))
+        if (user == null || string.IsNullOrWhiteSpace(user.Username)
         {
             return BadRequest("Username is required.");
         }

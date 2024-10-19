@@ -5,9 +5,9 @@ import {Character} from "../characterOverview/Character.ts";
 interface viewCharacterProps {
     isOpen: boolean;
     onClose: () => void;
-    createCharacter: (character : Character) => void;
+    character: Character;
 }
-const ViewCharacterProps = ({ isOpen, onClose, createCharacter }: viewCharacterProps) => {
+const ViewCharacterProps = ({ isOpen, onClose, character }: viewCharacterProps) => {
     if (!isOpen) return null;
     return (
         <div className="character-view-dialog-overlay">
@@ -15,7 +15,6 @@ const ViewCharacterProps = ({ isOpen, onClose, createCharacter }: viewCharacterP
             <button className="character-close-button" onClick={onClose}>CLOSE HERE</button>
             biepBupHä
             </div>
-            {/*// close*/}
         </div>
     );
 };
