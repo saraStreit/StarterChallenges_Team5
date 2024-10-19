@@ -33,3 +33,15 @@
   font-size: 16px;
   cursor: pointer;
 }
+
+.character-basic-details {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.basic-item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}

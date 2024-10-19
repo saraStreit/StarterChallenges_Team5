@@ -18,7 +18,10 @@ function App() {
 
     const [isViewDialogOpen, setisViewDialogOpen] = useState(false);
     // const openViewDialog = () => setisViewDialogOpen(true);
-    const closeViewDialog = () => setisViewDialogOpen(false);
+    const closeViewDialog = ()  =>{
+        setCurrentCharacter(undefined);
+        setisViewDialogOpen(false);
+    }
 
     const openViewDialog = (characterId: number) => {
         setCurrentCharacter(characters?.find(character => character.id === characterId));
@@ -39,9 +42,10 @@ function App() {
                     throw new Error('Network response was not ok');
                 }
                 const result = await response.json();
-                setCharacters(result);
+                console.log("result", result);
+                setCharacters(result as Character[]);
             } catch (error) {
-                // setError(error.message);
+                setError(error.message);
             } finally {
                 setLoading(false);
             }
@@ -54,15 +58,28 @@ function App() {
         {
             fetchCharacters().then(r => console.log(r));
         }
-    }, [characters]);
+        if(currentCharacter && currentCharacter.attributesDto == undefined)
+        {
+            const tempAttributes = {
+                wisdom: 10,
+                strength: 15,
+                dexterity: 12,
+                constitution: 8,
+                intelligence: 2,
+                charisma: 10,
+                initiative: 2
+            }
+            setCurrentCharacter({...currentCharacter, attributesDto: tempAttributes});
+        }
 
+    }, [characters, currentCharacter]);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
-
     const addCharacter = async (character : Character) => {
         try {
+            console.log(JSON.stringify(character));
             const response = await fetch(createCharacterUrl, {
                 method: 'POST',
                 headers: {
@@ -70,12 +87,10 @@ function App() {
                 },
                 body: JSON.stringify(character),
             });
-            setCharacters([character]);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             const result = await response.json()
-            console.log(result);
             setCharacters([]);
 
         } catch (error) {
@@ -93,13 +108,12 @@ function App() {
                         <h1>My Characters</h1>
                         {characters && <BiepBupBar characters={characters} addCharacter={openCreateDialog} />}
                     </div>
-                    <button onClick={() => openViewDialog(1)}>Create Character</button>
+                    {/*<button onClick={() => openViewDialog(1)}>Create Character</button>*/}
                     <div className="centeredContent">
                         {characters && <CharacterOverview characters={characters} setCurrentCharacter={setCurrentCharacterView}/>}
                     </div>
                 </div>
             </div>
-            {/*// CHeck how to open onclick with the new function/*/}
             {currentCharacter && <ViewCharacter isOpen={isViewDialogOpen} onClose={closeViewDialog} character={currentCharacter} />}
             <CreateCharacterDialog isOpen={isCreateDialogOpen} onClose={closeCreateDialog} createCharacter={addCharacter} />
         </>

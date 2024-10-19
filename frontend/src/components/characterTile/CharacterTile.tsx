@@ -14,7 +14,7 @@ const CharacterTile = ({character, setCurrentCharacter} : characterTileProps) =>
     return (
         <div className={"characterTile"} onClick={() => setCurrentCharacter(character)}>
             <ImageContainer name={"bupppp"} character={character} setCurrentCharacter={setCurrentCharacter} />
-            <TagContainer tags={[`${character.race}`, `${character.class}`, `${character.level}lvl`]} />
+            <TagContainer tags={[`${character.characterClass}`, `${character.gender}`, `Level ${character.level}`]} />
             <NameContainer name={character.name} />
         </div>
     )

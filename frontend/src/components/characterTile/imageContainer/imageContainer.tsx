@@ -7,7 +7,8 @@ interface imageContainerProps {
 }
 
 const ImageContainer = ({name, character, setCurrentCharacter} : imageContainerProps) => {
-
+console.log(character);
+console.log("smth");
     return (
         <div className={"imageContainer"} onClick={() => setCurrentCharacter(character)}>
             <div className={"imagePlaceholder"}>

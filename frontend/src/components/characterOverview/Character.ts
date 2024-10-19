@@ -1,14 +1,24 @@
 export interface Character {
     id?: number;
     name: string;
+    race?: string;
+    gender?: string;
+    characterClass?: string;
     level?: number;
-    class?: CharacterClass
-    race?: CharacterRace,
-    health?: number;
-    maxHealth?: number;
-    armorClass?: number;
-    characterBaseStats?: CharacterBaseStats;
-    // tags: string[];
+    armor?: number,
+    speed?: number;
+    attributes?: attributesDto;
+}
+
+export interface attributesDto {
+    id?: number;
+    strength: number;
+    dexterity: number;
+    constitution: number;
+    intelligence: number;
+    wisdom: number;
+    charisma: number;
+    initiative: number;
 }
 
 export enum CharacterClass {
