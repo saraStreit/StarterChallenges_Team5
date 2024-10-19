@@ -33,7 +33,7 @@ const StatDetailContainer = ({ character }: statDetailContainerProps) => {
         <div>
             <h3>Skills</h3>
             <div className={"skillDetailContainer"}>
-                <Skill name={Skills.Acrobatics} modifier={character.attributes?.dexterity ?? +0} />
+                <Skill name={Skills.Acrobatics} modifier={(character.attributes?.dexterity ?? +0) - 1} />
                 <Skill name={Skills.AnimalHandling} modifier={character.attributes?.wisdom ?? +2} />
                 <Skill name={Skills.Arcana} modifier={character.attributes?.intelligence ?? +1} />
                 <Skill name={Skills.Athletics} modifier={character.attributes?.strength ?? -1} />

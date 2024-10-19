@@ -40,13 +40,13 @@ const ViewCharacter = ({ isOpen, onClose, character }: viewCharacterProps) => {
     return (
         <div className="character-view-dialog-overlay">
             <div className={"character-view-dialog-content"}>
-            <button className="character-close-button" onClick={onClose}>CLOSE HERE</button>
+            <button className="character-close-button" onClick={onClose}>x</button>
                 <div>
-                    <BaseStatContainer name={"Wisdom"} number={fixedCharacter.attributes?.wisdom ?? 10} />
-                    <BaseStatContainer name={"Strength"} number={fixedCharacter.attributes?.strength ?? 12} />
-                    <BaseStatContainer name={"Dexterity"} number={fixedCharacter.attributes?.dexterity ?? 5} />
-                    <BaseStatContainer name={"Intelligence"} number={fixedCharacter.attributes?.intelligence ?? 9} />
-                    <BaseStatContainer name={"Charisma"} number={fixedCharacter.attributes?.charisma ?? 12} />
+                    <BaseStatContainer name={"Wisdom"} number={fixedCharacter.attributes?.wisdom ?? 2} />
+                    <BaseStatContainer name={"Strength"} number={fixedCharacter.attributes?.strength ?? 5} />
+                    <BaseStatContainer name={"Dexterity"} number={fixedCharacter.attributes?.dexterity ?? -2} />
+                    <BaseStatContainer name={"Intelligence"} number={fixedCharacter.attributes?.intelligence ?? 1} />
+                    <BaseStatContainer name={"Charisma"} number={fixedCharacter.attributes?.charisma ?? 3} />
                 </div>
                 <StatDetailContainer character={fixedCharacter}/>
                 <div className={"character-basic-details"}>
