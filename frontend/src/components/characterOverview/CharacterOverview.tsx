@@ -4,9 +4,10 @@ import { Character } from "./Character.ts";
 
 interface CharacterOverviewProps {
     characters: Character[];
+    setCurrentCharacter: (character: Character) => void;
 }
 
-const CharacterOverview = ({ characters }: CharacterOverviewProps) => {
+const CharacterOverview = ({ characters, setCurrentCharacter }: CharacterOverviewProps) => {
     const overviewRef = useRef<HTMLDivElement | null>(null);
     const [overviewWidth, setOverviewWidth] = useState<number>(0);
 
@@ -24,7 +25,7 @@ const CharacterOverview = ({ characters }: CharacterOverviewProps) => {
     return (
         <div className="characterOverview" ref={overviewRef}>
             {characters.map((character, index) => (
-                <CharacterTile key={index} character={character} />
+                <CharacterTile key={index} character={character} setCurrentCharacter={setCurrentCharacter} />
             ))}
         </div>
     );

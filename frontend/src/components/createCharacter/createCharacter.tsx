@@ -73,6 +73,8 @@ const CreateCharacterDialog = ({ isOpen, onClose, createCharacter }: createChara
         }
     }
 
+
+
     return (
         <div className="dialog-overlay">
             <div className="dialog-content">

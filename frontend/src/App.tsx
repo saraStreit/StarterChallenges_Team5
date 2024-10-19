@@ -26,6 +26,11 @@ function App() {
     }
     const [currentCharacter, setCurrentCharacter] = useState<Character>();
 
+    const setCurrentCharacterView = (character: Character) => {
+        setCurrentCharacter(character);
+        openViewDialog(character.id ?? 0);
+    }
+
     useEffect(() => {
         const fetchCharacters = async () => {
             try {
@@ -88,12 +93,13 @@ function App() {
                         <h1>My Characters</h1>
                         {characters && <BiepBupBar characters={characters} addCharacter={openCreateDialog} />}
                     </div>
-                    <button onClick={() => openViewDialog(2)}>Create Character</button>
+                    <button onClick={() => openViewDialog(1)}>Create Character</button>
                     <div className="centeredContent">
-                        {characters && <CharacterOverview characters={characters} />}
+                        {characters && <CharacterOverview characters={characters} setCurrentCharacter={setCurrentCharacterView}/>}
                     </div>
                 </div>
             </div>
+            {/*// CHeck how to open onclick with the new function/*/}
             {currentCharacter && <ViewCharacter isOpen={isViewDialogOpen} onClose={closeViewDialog} character={currentCharacter} />}
             <CreateCharacterDialog isOpen={isCreateDialogOpen} onClose={closeCreateDialog} createCharacter={addCharacter} />
         </>

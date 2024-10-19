@@ -7,12 +7,13 @@ import {Character} from "../characterOverview/Character.ts";
 
 interface characterTileProps {
    character: Character;
+   setCurrentCharacter: (character: Character) => void;
 }
 
-const CharacterTile = ({character} : characterTileProps) => {
+const CharacterTile = ({character, setCurrentCharacter} : characterTileProps) => {
     return (
-        <div className={"characterTile"}>
-            <ImageContainer name={"bupppp"} />
+        <div className={"characterTile"} onClick={() => setCurrentCharacter(character)}>
+            <ImageContainer name={"bupppp"} character={character} setCurrentCharacter={setCurrentCharacter} />
             <TagContainer tags={[`${character.race}`, `${character.class}`, `${character.level}lvl`]} />
             <NameContainer name={character.name} />
         </div>
