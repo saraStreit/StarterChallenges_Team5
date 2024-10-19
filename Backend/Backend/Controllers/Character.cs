@@ -81,6 +81,7 @@ public class CharacterController(AppDbContext context) : ControllerBase
     {
         var character = await context.Characters
             .Include(c => c.Attributes)
+            .Include(c => c.HealthPoints)
             .FirstOrDefaultAsync(c => c.Id == id);
 
         if (character == null)
@@ -100,7 +101,10 @@ public class CharacterController(AppDbContext context) : ControllerBase
             return BadRequest("Update data cannot be null.");
         }
 
-        var character = await context.Characters.Include(c => c.Attributes).FirstOrDefaultAsync(c => c.Id == id);
+        var character = await context.Characters
+            .Include(c => c.Attributes)
+            .FirstOrDefaultAsync(c => c.Id == id);
+        
         if (character == null)
         {
             return NotFound();

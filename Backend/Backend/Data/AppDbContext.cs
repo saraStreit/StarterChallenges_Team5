@@ -13,6 +13,10 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         modelBuilder.Entity<Character>()
             .HasOne(c => c.Attributes)
             .WithMany();
+        
+        modelBuilder.Entity<Character>()
+            .HasOne(c => c.HealthPoints)
+            .WithMany();
     }
     public DbSet<User> Users { get; set; }
 }
