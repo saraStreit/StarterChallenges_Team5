@@ -1,0 +1,53 @@
+.menu-container {
+
+    position: relative;
+    margin: 15px;
+    width: 50px;
+  
+    display: flex;
+  
+    flex-direction: column-reverse; 
+  
+    align-items: center;
+  
+  }
+    
+  .main-button {
+  
+    width: 50px;
+  
+    height: 50px;
+  
+    background-color:#00C89C; 
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    z-index: 10; 
+  }
+  .expanded-buttons {  
+    position: absolute;
+    bottom: 60px;
+    display: flex;
+    flex-direction: column-reverse; 
+    align-items: center;
+    gap: 10px;
+    z-index: 9; 
+  }
+  .expanded-buttons .button {
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 25px;
+  }
+  .expanded-buttons .button:last-child {
+    background-color: #333;
+  }
+   
