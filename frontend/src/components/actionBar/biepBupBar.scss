@@ -1,0 +1,12 @@
+.biepBupBar {
+  width: calc(100% + 10%); /* Calculate the width by subtracting 16px from 100% */
+  display: flex;
+    justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.characterCounter {
+  color: #9D95B1;
+  align-self: center;
+}
+

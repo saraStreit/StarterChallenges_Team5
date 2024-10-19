@@ -1,0 +1,17 @@
+.primaryButton {
+  background-color: #00C89C;
+  color: #221F29;
+  border: none;
+  padding: 9px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  transition: background-color 0.3s;
+  display: flex;
+  flex-direction: row;
+}
+
+.plus {
+  margin-right: 5px;
+}
