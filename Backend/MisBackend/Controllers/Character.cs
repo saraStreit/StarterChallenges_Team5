@@ -33,7 +33,6 @@ public class CharacterController(AppDbContext context) : ControllerBase
         {
             return NotFound();
         }
-
         return Ok(characters);
     }
 

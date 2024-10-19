@@ -26,8 +26,6 @@ const CharacterOverview = ({ characters }: CharacterOverviewProps) => {
             {characters.map((character, index) => (
                 <CharacterTile key={index} character={character} />
             ))}
-            {/* Optionally display the width */}
-            <p>Width of Character Overview: {overviewWidth}px</p>
         </div>
     );
 };
