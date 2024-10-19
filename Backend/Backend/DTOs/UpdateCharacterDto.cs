@@ -10,10 +10,11 @@ public class UpdateCharacterDto
     public string? Gender { get; set; }
 
     public string? Race { get; set; }
-    public string? Class { get; set; }
+    public string? CharacterClass { get; set; }
 
     public uint? Level { get; set; }
     public uint? Speed { get; set; }
 
     public CharacterAttribute? Attributes { get; set; }
+    public HealthPoints? HealthPoints { get; set; }
 }

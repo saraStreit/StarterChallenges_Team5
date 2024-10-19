@@ -21,13 +21,14 @@ public class Character
     public uint Speed { get; set; }
 
     public CharacterAttribute Attributes { get; set; }
+    public HealthPoints HealthPoints { get; set; }
 
     public Character()
     {
     }
 
     public Character(int id, string name, string gender, string race, string characterClass, uint level, uint armor,
-        uint speed, CharacterAttribute attributes)
+        uint speed, CharacterAttribute attributes, HealthPoints healthPoints)
     {
         Id = id;
         Name = name;
@@ -38,5 +39,6 @@ public class Character
         Armor = armor;
         Speed = speed;
         Attributes = attributes;
+        HealthPoints = healthPoints;
     }
 }

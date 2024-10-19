@@ -46,6 +46,12 @@ public class CharacterController(AppDbContext context) : ControllerBase
                 wisdom: createCharacterDto.AttributesDto.Wisdom ?? 0,
                 charisma: createCharacterDto.AttributesDto.Charisma ?? 0,
                 initiative: createCharacterDto.AttributesDto.Initiative ?? 0
+            ),
+            healthPoints: new HealthPoints
+            (
+                id: 0,
+                current: createCharacterDto.HealthPointsDto.Current ?? 0,
+                max: createCharacterDto.HealthPointsDto.Max ?? 0
             )
         );
 
@@ -73,7 +79,10 @@ public class CharacterController(AppDbContext context) : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<Character>> GetCharacterById(int id)
     {
-        var character = await context.Characters.FindAsync(id);
+        var character = await context.Characters
+            .Include(c => c.Attributes)
+            .Include(c => c.HealthPoints)
+            .FirstOrDefaultAsync(c => c.Id == id);
 
         if (character == null)
         {
@@ -92,21 +101,49 @@ public class CharacterController(AppDbContext context) : ControllerBase
             return BadRequest("Update data cannot be null.");
         }
 
-        var character = await context.Characters.Include(c => c.Attributes).FirstOrDefaultAsync(c => c.Id == id);
+        var character = await context.Characters
+            .Include(c => c.Attributes)
+            .Include(c => c.HealthPoints)
+            .FirstOrDefaultAsync(c => c.Id == id);
+        
         if (character == null)
         {
             return NotFound();
         }
 
-        // Update character properties
         if (!string.IsNullOrWhiteSpace(updateCharacterDto.Name))
         {
             character.Name = updateCharacterDto.Name;
         }
 
+        if (!string.IsNullOrWhiteSpace(updateCharacterDto.Gender))
+        {
+            character.Gender = updateCharacterDto.Gender;
+        }
+
+        if (!string.IsNullOrWhiteSpace(updateCharacterDto.Race))
+        {
+            character.Race = updateCharacterDto.Race;
+        }
+
+        if (!string.IsNullOrWhiteSpace(updateCharacterDto.CharacterClass))
+        {
+            character.CharacterClass = updateCharacterDto.CharacterClass;
+        }
+
+        if (updateCharacterDto.Level.HasValue)
+        {
+            character.Level = updateCharacterDto.Level.Value;
+        }
+
         if (updateCharacterDto.Armor.HasValue)
         {
             character.Armor = updateCharacterDto.Armor.Value;
+        }
+
+        if (updateCharacterDto.Speed.HasValue)
+        {
+            character.Speed = updateCharacterDto.Speed.Value;
         }
 
         if (updateCharacterDto.Attributes != null)
@@ -118,6 +155,12 @@ public class CharacterController(AppDbContext context) : ControllerBase
             character.Attributes.Wisdom = updateCharacterDto.Attributes.Wisdom;
             character.Attributes.Charisma = updateCharacterDto.Attributes.Charisma;
             character.Attributes.Initiative = updateCharacterDto.Attributes.Initiative;
+        }
+        
+        if (updateCharacterDto.HealthPoints != null)
+        {
+            character.HealthPoints.Current = updateCharacterDto.HealthPoints.Current;
+            character.HealthPoints.Max = updateCharacterDto.HealthPoints.Max;
         }
 
         await context.SaveChangesAsync();
