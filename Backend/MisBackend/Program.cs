@@ -21,6 +21,8 @@ builder.Services.AddCors(options =>
             var origins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>() ?? [];
             policyBuilder.WithOrigins(origins)
                 .SetIsOriginAllowedToAllowWildcardSubdomains()
+                .AllowAnyHeader() // Allow any header
+                .AllowAnyMethod() // Allow any HTTP method
                 .SetPreflightMaxAge(TimeSpan.FromHours(24));
         });
 });
