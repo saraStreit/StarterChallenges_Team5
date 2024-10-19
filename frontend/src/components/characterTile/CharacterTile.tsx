@@ -1,6 +1,6 @@
 import NameContainer from "./nameContainer/nameContainer.tsx";
 import ImageContainer from "./imageContainer/imageContainer.tsx";
-import TagContainer from "./tagContainer/tagContainer.tsx";
+// import TagContainer from "./tagContainer/tagContainer.tsx";
 
 
 interface characterTileProps {

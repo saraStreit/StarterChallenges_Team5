@@ -6,14 +6,26 @@ import {createCharacterUrl, getCharactersUrl} from "./constants.tsx";
 import BiepBupBar from "./components/actionBar/biepBupbar.tsx";
 import { useEffect, useState } from "react";
 import CreateCharacterDialog from "./components/createCharacter/createCharacter.tsx";
+import ViewCharacter from "./components/viewCharacter/viewCharacter.tsx";
+import createCharacter from "./components/createCharacter/createCharacter.tsx";
 
 function App() {
     const [characters, setCharacters] = useState<Character[]>();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
-    const openDialog = () => setIsDialogOpen(true);
-    const closeDialog = () => setIsDialogOpen(false);
+    const [isCreateDialogOpen, setisCreateDialogOpen] = useState(false);
+    const openCreateDialog = () => setisCreateDialogOpen(true);
+    const closeCreateDialog = () => setisCreateDialogOpen(false);
+
+    const [isViewDialogOpen, setisViewDialogOpen] = useState(false);
+    // const openViewDialog = () => setisViewDialogOpen(true);
+    const closeViewDialog = () => setisViewDialogOpen(false);
+
+    const openViewDialog = (characterId: number) => {
+        setCurrentCharacter(characters?.find(character => character.id === characterId));
+        setisViewDialogOpen(true);
+    }
+    const [currentCharacter, setCurrentCharacter] = useState<Character>();
 
     useEffect(() => {
         const fetchCharacters = async () => {
@@ -75,15 +87,16 @@ function App() {
                 <div className="content">
                     <div className="startOfContent">
                         <h1>My Characters</h1>
-                        {/*<button onClick={openDialog}>Open Dialog</button>*/}
-                        {characters && <BiepBupBar characters={characters} addCharacter={openDialog} />}
+                        {characters && <BiepBupBar characters={characters} addCharacter={openCreateDialog} />}
                     </div>
+                    <button onClick={() => openViewDialog(2)}>Create Character</button>
                     <div className="centeredContent">
                         {characters && <CharacterOverview characters={characters} />}
                     </div>
                 </div>
             </div>
-            <CreateCharacterDialog isOpen={isDialogOpen} onClose={closeDialog} createCharacter={addCharacter} />
+            <ViewCharacter isOpen={isViewDialogOpen} onClose={closeViewDialog} createCharacter={addCharacter} />
+            <CreateCharacterDialog isOpen={isCreateDialogOpen} onClose={closeCreateDialog} createCharacter={addCharacter} />
         </>
     );
 }
