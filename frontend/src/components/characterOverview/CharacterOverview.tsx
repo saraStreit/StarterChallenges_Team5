@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import CharacterTile from "../characterTile/CharacterTile.tsx";
 import { Character } from "./Character.ts";
 
