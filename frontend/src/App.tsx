@@ -1,4 +1,4 @@
-import './App.scss';
+import './App.scss'
 import Header from "./components/header/Header.tsx";
 import CharacterOverview from "./components/characterOverview/CharacterOverview.tsx";
 import { Character } from "./components/characterOverview/Character.ts";
@@ -26,7 +26,14 @@ function App() {
                 setLoading(false);
             }
         };
+        if (!characters)
+        {
             fetchCharacters().then(r => console.log(r));
+        }
+        if (characters && characters.length == 0)
+        {
+            fetchCharacters().then(r => console.log(r));
+        }
     }, [characters]);
 
 
@@ -49,7 +56,8 @@ function App() {
             }
             const result = await response.json()
             console.log(result);
-            // setData([...data, result]);
+            setCharacters([]);
+
         } catch (error) {
             console.error('There was an error!', error);
         }
