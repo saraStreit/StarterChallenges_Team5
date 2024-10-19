@@ -5,11 +5,15 @@ import { Character } from "./components/characterOverview/Character.ts";
 import {createCharacterUrl, getCharactersUrl} from "./constants.tsx";
 import BiepBupBar from "./components/actionBar/biepBupbar.tsx";
 import { useEffect, useState } from "react";
+import CreateCharacterDialog from "./components/createCharacter/createCharacter.tsx";
 
 function App() {
     const [characters, setCharacters] = useState<Character[]>();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const openDialog = () => setIsDialogOpen(true);
+    const closeDialog = () => setIsDialogOpen(false);
 
     useEffect(() => {
         const fetchCharacters = async () => {
@@ -63,20 +67,23 @@ function App() {
         }
     }
 
+
     return (
         <>
-            <div className={"wrapper"}>
+            <div className="wrapper">
                 <Header />
-                <div className={"content"}>
-                    <div className={"startOfContent"}>
+                <div className="content">
+                    <div className="startOfContent">
                         <h1>My Characters</h1>
-                        { characters && <BiepBupBar characters={characters} addCharacter={addCharacter} />}
+                        <button onClick={openDialog}>Open Dialog</button>
+                        {characters && <BiepBupBar characters={characters} addCharacter={addCharacter} />}
                     </div>
-                    <div className={"centeredContent"}>
+                    <div className="centeredContent">
                         {characters && <CharacterOverview characters={characters} />}
                     </div>
                 </div>
             </div>
+            <CreateCharacterDialog isOpen={isDialogOpen} onClose={closeDialog} createCharacter={addCharacter} />
         </>
     );
 }
